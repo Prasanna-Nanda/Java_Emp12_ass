@@ -1,11 +1,12 @@
-import java.util.Random;
-import java.lang.*;
-import java.io.*;
+  
+package empWageDayTwoOne;
 
-class Employee
+import java.util.Random;
+
+class EmployeeWage
 {
 
-	int getEmpHours(int randomNumber,int partTimeHour,int fullTimeHour,int wagePerHour,int absent)
+	int getEmpWage(int randomNumber,int partTimeHour,int fullTimeHour,int wagePerHour,int absent)
 	{
 		int temp=randomNumber;
 		int tempWage=0;
@@ -26,6 +27,25 @@ class Employee
 		return tempWage;
 	}
 
+	int getEmpHoursMethod(int randomNumber,int partTimeHour,int fullTimeHour,int absent)
+	{
+		 int tempHour=0;
+		 switch(randomNumber)
+	    	{
+	    		case 1:
+	    			tempHour=partTimeHour;
+	    			break;
+	    		case 2:
+	    			tempHour=fullTimeHour;
+	    			break;
+	    		default:
+	    			tempHour=absent;
+	    	}
+
+			return tempHour;
+	 }
+
+
 
         public static void main(String[] args)
         {
@@ -40,8 +60,13 @@ class Employee
 		int counter=0;
 	        int totalWorkingDays=20;
 	        int tempWage=0;
+		int maxHoursInMonth=100;
+	        int totalEmpHours=0;
+	        int empHours=0;
+	        int totalEmpWage=0;
+	        int getWage=0;
 
-		Employee emp=new Employee();
+		EmployeeWage emp=new EmployeeWage();
 	        System.out.println("Welcome to employee wage computation");
 		while( counter != workingDayPerMonth )
 	        {
@@ -50,9 +75,15 @@ class Employee
 	                for(int i=1; i<=totalWorkingDays; i++)
 	                {
 	                	int randomNum=random.nextInt(3);
-	                    	int wagesOfEmployee=emp.getEmpHours(randomNum, partTimeHour, fullTimeHour, wagePerHour, absent);
+	                    	int wagesOfEmployee=emp.getEmpWage(randomNum, partTimeHour, fullTimeHour, wagePerHour, absent);
 	                    	System.out.println("Day["+i+"]-"+wagesOfEmployee);
-	                    	counter++;
+	                    	totalEmpHours= totalEmpHours + emp.getEmpHoursMethod(randomNum,partTimeHour,fullTimeHour,absent);
+	                    	System.out.println("Total Hours worked in month:"+totalEmpHours);
+
+	                    	getWage=emp.getEmpWage(randomNum, partTimeHour, fullTimeHour, wagePerHour, absent);
+	                    	totalEmpWage=(totalEmpWage+getWage);
+		                System.out.println("Total Salary per month according to employee attendace:" +totalEmpWage);
+				counter++;
 	                 }
 
         	}
