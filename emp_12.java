@@ -1,6 +1,3 @@
-
-/* package codechef; // don't place package name! */
-
 import java.util.Random;
 import java.lang.*;
 import java.io.*;
