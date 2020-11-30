@@ -2,30 +2,36 @@ import java.util.Random;
 import java.lang.*;
 import java.io.*;
 
-
 class Employee
 {
 
         public static void main(String[] args)
         {
-            int head=1;
-            int tail=0;
-	    int wagePerHour=20;
+		int fullTimePresent=2;
+		int partTimePresent=1;
+		int absent=0;
+		int wagePerHour=20;
+		int fullTimeHour=8;
+		int partTimeHour=4;
+		int dailyEmpWage=0;
 
-            System.out.println("Welcome to employee wage computation");
-            Random random=new Random();
-            int  randomNum=random.nextInt(2);
-            if(randomNum == head)
-            {
-                System.out.println("Employee is present:"+randomNum);
-            }
-            else
-            {
-                System.out.println("Employee is absent:"+randomNum);
-            }
-	    int dailyEmpWage=randomNum*wagePerHour;
-	    System.out.println("Daily Emp Wage:"+dailyEmpWage);
+		System.out.println("Welcome to employee wage computation");
+		Random random=new Random();
+		int randomNum=random.nextInt(3);
+		switch(randomNum)
+		{
+	                case 1:
+               			int partTimeWage=(partTimeHour*wagePerHour);
+	                	System.out.println("Part Time Employee "+partTimeWage);
+	                	break;
+	                case 2:
 
+                		int fullTimeWage=(fullTimeHour*wagePerHour);
+                		System.out.println("Full Time Employee "+fullTimeWage);
+                		break;
+	                default:
+                		System.out.println("Absent "+absent);
+		}
 
         }
 }
