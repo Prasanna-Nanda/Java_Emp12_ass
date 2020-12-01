@@ -1,18 +1,26 @@
 package com.empwage.company;
 
 import java.util.*;
+interface EmpwageBuilder
+{
+	public void wageCompute(companyEmployeewage obj);
+}
 
-class EmployeeWage
+public class EmployeeWage implements EmpwagesBuilder
 {
 	final int IS_PART_TIME=1;
 	final int IS_FULL_TIME=2;
+	ArrayList<Integer> EmpDailyMonthlyTotalWage=new Array<Integer>();
 
 	public void wageCompute(companyEmployeeWage companyEmp)
 	{
+		System.out.println("Now" +comanyEmp.getCompanyName()+ "Employee wage Computation");
+
 		int empHours=0;
 		int totalEmpHours=0;
 		int totalWorkingDays=0;
 		int totalEmpWage=0;
+		int empDailyWage=0;
 		while(totalWorkingDays < companyEmp.getNoOfWorkingDay() && totalEmpHours < companyEmp.getmaxHoursInMonth())
 		{
 			int employeePresence=(int) ( ( Math.random()*10 ) % 3);
@@ -29,6 +37,9 @@ class EmployeeWage
 			}
 			totalWorkingDays++;
 			totalEmpHours=totalEmpHours+empHours;
+			empDailyWage=empHours*companyEmp.getEmpRatePerHour();
+			empDailyMonthlyTotalWage.add(empDailyWage);
+			System.out.println("Day:"+totalWorkingDays+"Wage is:"+empDailyWage);
 		}
 		companyEmp.setTotalEmpWage(totalEmpHours*companyEmp.empRatePerHour);
 		System.out.println("Employee Monthly wage of" +companyEmp.getComapanyName()+ " is " + companyEmp.getTotalEmpWage());
